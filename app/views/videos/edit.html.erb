@@ -1,2 +1,29 @@
-<h1>Videos#edit</h1>
-<p>Find me in app/views/videos/edit.html.erb</p>
+<% if @video.errors.any? %>
+
+    <%= @video.errors.count %>errors prohibited this obj from being saved:
+
+    <ul>
+      <% @video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+
+<% end %>
+<h2 div class="text-center">作品編集画面</h2>
+
+  <%= form_for(@video, url:videos_path(@video),method: :patch) do |f| %>
+  <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"300x200" %>
+  <%= f.attachment_field :image %>
+
+  <%= f.select :category_id,[["映画","映画"],["ドラマ","ドラマ"],["アニメ","アニメ"],["それ以外のカテゴリー","それ以外のカテゴリー"]], include_blank:"--カテゴリー選択--" %>
+  <%= f.select :genre_id,[["アクション","アクション"],["冒険","冒険"],["コメディ","コメディ"],["ミステリー","ミステリー"],["ヒューマン","ヒューマン"],["SF","SF"],["ファンタジー","ファンタジー"],["ホラー","ホラー"],["犯罪","犯罪"],["それ以外のジャンル","それ以外のジャンル"]], include_blank:"--ジャンル選択--" %>
+  <div class="form_group">
+    <%= f.label :name, "作品名" %>
+    <%= f.text_field :name %>
+  </div>
+  <div class="form_group">
+    <%= f.label :summary, "あらすじ" %>
+    <%= f.text_area :summary %>
+  </div>
+    <%= f.submit '変更', class: "btn btn-primary" %>
+  <% end %>

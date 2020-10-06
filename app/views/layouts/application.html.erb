@@ -8,6 +8,27 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <header>
+    <% if user_signed_in? %>
+      <%= link_to 'トップ', home_top_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to '映画', video_videos_movie_path(:video_id), class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'ドラマ', video_drama_index_path(:video_id), class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'アニメ', video_animation_index_path(:video_id), class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'その他', video_another_index_path(:video_id), class: "navbar-item button is-warning is-light" %>
+      <%= link_to '作品登録', new_video_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'About', home_about_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'マイページ', user_path(current_user), class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "navbar-item button is-warning is-light" %>
+    <% else %>
+            <%= link_to 'トップ', home_top_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to '映画', video_movie_index_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'ドラマ', video_dorama_index_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'アニメ', video_animation_index_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'その他', video_another_index_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to '作品登録', new_video_path, class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'About', home_about, class: "navbar-item button is-warning is-light" %>
+      <%= link_to 'ログイン/新規登録', new_user_session_path, class: "navbar-item button is-warning is-light" %>
+    <% end %>
 
   <body>
     <%= yield %>

@@ -1,2 +1,13 @@
-<h1>Videos#show</h1>
-<p>Find me in app/views/videos/show.html.erb</p>
+<h2>作品詳細画面</h2>
+
+<%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"300x200" %>
+
+<h3>作品名</h3>
+<h3><%= @video.name %></h3>
+<h3>あらすじ</h3>
+<h5><%= @video.summary %></h5>
+<h5>カテゴリー<%= @video.category_id %></h5>
+<h5>ジャンル<%= @video.genre_id %></h5>
+
+<%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
+<%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>

@@ -1,0 +1,11 @@
+<h1>映画一覧</h1>
+
+<% @videos.each do |video| %>
+
+<%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"300x200" %>
+<h3>作品名</h3>
+<%= video.name %>
+<h5><%= video.summary %></h5>
+<h5>カテゴリー<%= video.category_id %></h5>
+<h5>ジャンル<%= video.genre_id %></h5>
+<% end %>
