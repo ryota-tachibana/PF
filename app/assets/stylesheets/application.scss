@@ -15,3 +15,20 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ * {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: border-box;
+}
+
+.box{
+	float: left;
+	margin-right: 30px;
+	margin-bottom: 30px;
+	background-color: grey;
+}
+
+.container{
+	width: 100%;
+}

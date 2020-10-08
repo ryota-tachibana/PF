@@ -6,6 +6,6 @@ class User < ApplicationRecord
   has_many :favorites
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-
+  attachment :profile_image
 
 end

@@ -4,13 +4,16 @@ class VideosController < ApplicationController
     @videos = Video.where(category_id: "0")
   end
 
-  def drama_index
+  def drama
+    @videos = Video.where(category_id: "1")
   end
 
-  def animation_index
+  def animation
+    @videos = Video.where(category_id: "2")
   end
 
-  def another_index
+  def another
+    @videos = Video.where(category_id: "3")
   end
 
   def new
@@ -19,6 +22,7 @@ class VideosController < ApplicationController
 
   def create
     @video = Video.new(video_params)
+    @video.user_id = current_user.id
     if
     @video.save
     redirect_to video_path(@video.id)

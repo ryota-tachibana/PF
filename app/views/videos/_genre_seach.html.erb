@@ -1,0 +1,16 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+	  <th>ジャンル検索</th>
+	</tr>
+	</thead>
+	<% video.each do |video| %>
+      <tbody>
+	    <tr>
+		   <td>
+		   <%= link_to video.genre_id, videos_genre_search_path(genre_id_search: videos.genre_id) %>
+		   </td>
+		</tr>
+	  </tbody>
+    <% end %>
+</table>

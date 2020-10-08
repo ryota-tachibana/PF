@@ -1,0 +1,25 @@
+<h1>ドラマ一覧</h1>
+
+<% @videos.each do |video| %>
+
+<%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"300x200" %>
+<h3>作品名</h3>
+<%= video.name %>
+<h5><%= video.summary %></h5>
+<h5>カテゴリー<%= video.category_id %></h5>
+<h5>ジャンル<%= video.genre_id %></h5>
+<!-- お気に入り機能 -->
+<% if video.favorited_by?(current_user) %>
+<%= link_to video_favorites_path(video), method: :delete do %>
+<span><%= button_tag(class: "btn btn-default btn-md") do %>
+	<%= content_tag :span, "", class: "glyphicon glyphicon-heart" %>
+	<%= video.favorites.count %>
+</span>
+<% end %>
+<% end %>
+<% else %>
+<%= link_to video_favorites_path(video), method: :post  do %>
+<span class="glyphicon glyphicon-star-empty" aria-hidden="true"><%= video.favorites.count %></span>
+<% end %>
+<% end %>
+<% end %>

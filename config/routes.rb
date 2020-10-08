@@ -5,11 +5,12 @@ get 'home/top' => 'homes#top'
 get 'home/about' => 'homes#about'
 
 resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
+get 'genre_search' => 'videos#genre_search' #ジャンル検索
 get 'videos_movie' => 'videos#movie'
-get 'drama_index' => 'drama#index'
-get 'animation_index' => 'animation#index'
-get 'another_index' => 'another#index'
-resources :favorites, only: [:create, :destroy]
+get 'videos_drama' => 'videos#drama'
+get 'videos_animation' => 'videos#animation'
+get 'videos_another' => 'videos#another'
+resource :favorites, only: [:create, :destroy]
 end
 resources :users, only: [:show, :edit, :update]
 resources :reviews, only: [:create, :edit, :update, :destroy]

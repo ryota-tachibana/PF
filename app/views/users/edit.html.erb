@@ -1,2 +1,27 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<h1>登録情報編集</h1>
+<%= form_for @user, url:user_path(@user.id) do |f| %>
+<%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
+ <%= f.attachment_field :profile_image %>
+<table>
+  <tbody>
+    <tr>
+      <th>ニックネーム</th>
+      <td><%= f.text_field :name %>
+    </tr>
+    <tr>
+      <th>メールアドレス</th>
+      <td><%= f.text_field :email %>
+    </tr>
+    <tr>
+      <th>パスワード</th>
+      <td><%= f.text_field :password %></td>
+    </tr>
+      <th>パスワード(確認用)</th>
+      <td><%= f.text_field :password %></td>
+  </tbody>
+</table>
+      <%= f.submit "変更を保存する", class: "btn btn-info" %>
+<% end %>
+
+
+

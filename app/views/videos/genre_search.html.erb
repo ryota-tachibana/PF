@@ -1,0 +1,38 @@
+<div class="container">
+
+	<div class="row">
+		<div class="col-xs-3">
+
+	  <th>ジャンル検索</th>
+	</tr>
+	</thead>
+	<% @video.each do |video| %>
+      <tbody>
+	    <tr>
+		   <td>
+		   <%= link_to video.genre_id, video_genre_search_path(genre_id_search: video) %>
+		   </td>
+		</tr>
+	  </tbody>
+    <% end %>
+</table>
+
+		<div class="col-xs-9">
+
+<h2 div class="text-center">〜映画一覧〜</h2>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-9">
+<% @video.each do |video| %>
+<div class="box">
+<div>
+<%= attachment_image_tag video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
+</div>
+<div><%= video.name %></div>
+<div><h5>カテゴリー<%= video.category_id %></h5></div>
+<div><h5>ジャンル<%= video.genre_id %></h5></div>
+</div>
+<% end %>
+</div>
+</div>
+</div>
