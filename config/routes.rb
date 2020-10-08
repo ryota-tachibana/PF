@@ -3,9 +3,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 get 'home/top' => 'homes#top'
 get 'home/about' => 'homes#about'
-
-resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
 get 'genre_search' => 'videos#genre_search' #ジャンル検索
+resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
 get 'videos_movie' => 'videos#movie'
 get 'videos_drama' => 'videos#drama'
 get 'videos_animation' => 'videos#animation'

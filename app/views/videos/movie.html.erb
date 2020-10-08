@@ -2,18 +2,21 @@
 
 <div class="container">
   <div class="row">
+    <div class="col-xs-3">
+      <%= render 'videos/genre_search' %>
+    </div>
 
     <div class="col-xs-9">
-<% @videos.each do |video| %>
-<div class="box">
-<div>
-<%= attachment_image_tag video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
-</div>
-<div><%= video.name %></div>
-<div><h5>カテゴリー<%= video.category_id %></h5></div>
-<div><h5>ジャンル<%= video.genre_id %></h5></div>
-</div>
-<% end %>
-</div>
-</div>
+      <% @videos.each do |video| %>
+        <div class="box">
+          <div>
+            <%= attachment_image_tag video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
+          </div>
+          <div><%= video.name %></div>
+          <div><h5>カテゴリー<%= video.category_id %></h5></div>
+          <div><h5>ジャンル<%= video.genre_id %></h5></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

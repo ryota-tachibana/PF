@@ -33,6 +33,8 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @review = Review.new
+    @reviews = @video.reviews
   end
 
   def edit
@@ -46,6 +48,11 @@ class VideosController < ApplicationController
   end
 
   def destroy
+  end
+
+  def genre_search
+  @videos = Video.where(genre_id: params[:genre_name])
+
   end
 
   private

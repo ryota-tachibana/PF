@@ -11,3 +11,43 @@
 
 <%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
 <%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+<!-- レビュー機能-->
+<%= form_for @review do |f| %>
+
+<!--作品の送信-->
+  <%= f.hidden_field :video_id, value: @video.id %>
+
+<!-- 評価 -->
+  <div class="form-group row" id="star">
+    <%= f.label :rating,'評価 ', class:'col-md-3 col-form-label' %>
+    <%= f.hidden_field :rating, id: :review_star %>
+  </div>
+
+<!-- 評価javascript -->
+  <script>
+  $('#star').raty({
+  	size     : 36,
+  	starOff:  '<%= asset_path('star-off.png') %>',
+  	starOn:  '<%= asset_path('star-on.png') %>',
+    starHalf:  '<%= asset_path('star-half') %>',
+    scoreName: 'review[rating]',
+    half: true,
+  });
+  </script>
+
+<!-- 口コミ -->
+  <div class="form-group row">
+    <%= f.label :impression, '感想 ', class:'col-md-3 col-form-label' %>
+    <div class="col-md-12">
+      <%= f.text_area :impression, class: "form-control",
+        placeholder:'感想内容がなくても、評価のみで投稿できます。' %>
+    </div>
+  </div>
+
+  <!-- 確認ボタン -->
+  <div class="form-group row justify-content-end">
+    <div class="col-md-9">
+      <%= f.submit '投稿する', class:"btn btn-success" %>
+    </div>
+  </div>
+  <% end%>
