@@ -12,7 +12,7 @@
         <div class="box">
           <div>
           <%= link_to video_path(video) do %>
-          <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
+          <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"200x300" %>
           <% end %>
           </div>
           <div><%= video.name %></div>
@@ -36,8 +36,7 @@
               <% end %>
             <% end %>
           <% end %>
-          <!-- ここまで -->
-            <!-- 星評価 -->
+          <!-- 星評価機能 -->
          <div id="star-rating-<%= video.id %>"></div>
           <script>
           $('#star-rating-<%= video.id %>').raty({
@@ -50,8 +49,8 @@
             score: <%= video.reviews.size.zero? ? 0 : video.reviews.map(&:rating).sum / video.reviews.size %>,
           });
           </script>
-          <!-- ここまで -->
-
+          <!-- 平均値算出　評価なしの場合は0で返す -->
+          <%= (video.reviews.size.zero? ? 0 : video.reviews.map(&:rating).sum / video.reviews.size).round(1) %>
         </div>
       <% end %>
     </div>

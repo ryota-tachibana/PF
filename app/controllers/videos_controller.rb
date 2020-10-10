@@ -2,22 +2,22 @@ class VideosController < ApplicationController
 
   def movie
     @videos = Video.where(category_id: "0")
-    @category_name = 0
+    @category_name = "映画"
   end
 
   def drama
     @videos = Video.where(category_id: "1")
-    @category_name = 1
+    @category_name = "ドラマ"
   end
 
   def animation
     @videos = Video.where(category_id: "2")
-    @category_name = 2
+    @category_name = "アニメ"
   end
 
   def another
     @videos = Video.where(category_id: "3")
-    @category_name = 3
+    @category_name = "その他"
   end
 
   def new
