@@ -35,26 +35,25 @@
           <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
           <% end %>
           </div>
-          <div><%= @video.name %></div>
-          <div><h5>カテゴリー<%= @video.category_id %></h5></div>
-          <div><h5>ジャンル<%= @video.genre_id %></h5></div>
-          <% if @video.favorited_by?(current_user) %>
-            <%= link_to video_favorites_path(@video), method: :delete do %>
+          <div><%= favorite.video.name %></div>
+          <div><h5><%= favorite.video.category_id %></h5></div>
+          <div><h5><%= favorite.video.genre_id %></h5></div>
+          <% if favorite.video.favorited_by?(current_user) %>
+            <%= link_to video_favorites_path(favorite.video), method: :delete do %>
               <span><%= button_tag(class: "btn btn-default btn-md") do %>
             <%= content_tag :span, "", class: "glyphicon glyphicon-star" %>
-            <%= @video.favorites.count %>
+            <%= favorite.video.favorites.count %>
             </span>
               <% end %>
             <% end %>
           <% else %>
-            <%= link_to video_favorites_path(@video), method: :post  do %>
+            <%= link_to video_favorites_path(favorite.video), method: :post  do %>
               <span><%= button_tag(class: "btn btn-default btn-md") do %>
               <%= content_tag :span, "", class: "glyphicon glyphicon-star-empty" %>
-              <%= @video.favorites.count %>
+              <%= favorite.video.favorites.count %>
               </span>
               <% end %>
             <% end %>
-
           <% end %>
         </div>
       <% end %>
