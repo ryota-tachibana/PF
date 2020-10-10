@@ -2,18 +2,22 @@ class VideosController < ApplicationController
 
   def movie
     @videos = Video.where(category_id: "0")
+    @category_name = 0
   end
 
   def drama
     @videos = Video.where(category_id: "1")
+    @category_name = 1
   end
 
   def animation
     @videos = Video.where(category_id: "2")
+    @category_name = 2
   end
 
   def another
     @videos = Video.where(category_id: "3")
+    @category_name = 3
   end
 
   def new
@@ -33,6 +37,7 @@ class VideosController < ApplicationController
 
   def show
     @video = Video.find(params[:id])
+    @user = current_user
     @review = Review.new
     @reviews = @video.reviews
   end
@@ -51,8 +56,8 @@ class VideosController < ApplicationController
   end
 
   def genre_search
-  @videos = Video.where(genre_id: params[:genre_name])
-
+  @videos = Video.where(genre_id: params[:genre_name],category_id: params[:category_name])
+  @category_name = params[:category_name]
   end
 
   private

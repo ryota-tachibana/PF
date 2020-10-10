@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
   @user = User.find(params[:id])
+  @video = Video.find(params[:id])
+  @favorites = Favorite.where(user_id: current_user.id).all
   end
 
   def edit

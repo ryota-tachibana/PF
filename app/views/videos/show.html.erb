@@ -16,6 +16,8 @@
 
 <!--作品の送信-->
   <%= f.hidden_field :video_id, value: @video.id %>
+<!--投稿者の送信-->
+  <%= f.hidden_field :user_id, value: @user.id %>
 
 <!-- 評価 -->
   <div class="form-group row" id="star">

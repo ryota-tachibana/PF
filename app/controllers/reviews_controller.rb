@@ -1,8 +1,12 @@
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
-    @review.save
+    if @review.save
     redirect_to request.referer
+    else
+    render 'homes/about'
+    end
+
   end
 
   def edit
@@ -16,6 +20,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:user_id, :video_id, :rating, :impression)
+    params.require(:review).permit(:id, :user_id, :video_id, :rating, :impression)
   end
   end

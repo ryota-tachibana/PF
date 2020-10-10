@@ -1,7 +1,11 @@
 <h2 div class="text-center">マイページ</h2>
-<h5>登録情報</h5>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-1">
+<h4>登録情報</h4>
   <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
-
+    </div>
+    <div class="col-xs-7 col-xs-offset-2">
 <table class="table table-bordered">
   <tr>
     <th>ニックネーム</th>
@@ -18,4 +22,43 @@
 </table>
 
 <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-primary" %>
+     </div>
+     </div>
+   </div>
+
+   <h3>お気に入り一覧</h3>
+   <% @favorites.each do |favorite| %>
+
+           <div class="box">
+          <div>
+          <%= link_to video_path(@video) do %>
+          <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
+          <% end %>
+          </div>
+          <div><%= @video.name %></div>
+          <div><h5>カテゴリー<%= @video.category_id %></h5></div>
+          <div><h5>ジャンル<%= @video.genre_id %></h5></div>
+          <% if @video.favorited_by?(current_user) %>
+            <%= link_to video_favorites_path(@video), method: :delete do %>
+              <span><%= button_tag(class: "btn btn-default btn-md") do %>
+            <%= content_tag :span, "", class: "glyphicon glyphicon-star" %>
+            <%= @video.favorites.count %>
+            </span>
+              <% end %>
+            <% end %>
+          <% else %>
+            <%= link_to video_favorites_path(@video), method: :post  do %>
+              <span><%= button_tag(class: "btn btn-default btn-md") do %>
+              <%= content_tag :span, "", class: "glyphicon glyphicon-star-empty" %>
+              <%= @video.favorites.count %>
+              </span>
+              <% end %>
+            <% end %>
+
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
 

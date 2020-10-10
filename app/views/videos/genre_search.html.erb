@@ -11,8 +11,8 @@
           <%= attachment_image_tag video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
         </div>
         <div><%= video.name %></div>
-        <div><h5>カテゴリー<%= video.category_id %></h5></div>
-        <div><h5>ジャンル<%= video.genre_id %></h5></div>
+        <div><h5><%= video.category_id %></h5></div>
+        <div><h5><%= video.genre_id %></h5></div>
       </div>
           <% end %>
       </div>
