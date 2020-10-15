@@ -8,6 +8,9 @@ class Video < ApplicationRecord
   validates :genre_id, presence:true
 
   def favorited_by?(user)
+    if user.nil? #未ログインの場合falseで返す
+      return false
+    end
     favorites.where(user_id: user.id).exists?
   end
 end

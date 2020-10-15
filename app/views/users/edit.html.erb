@@ -14,10 +14,13 @@
     </tr>
     <tr>
       <th>パスワード</th>
-      <td><%= f.text_field :password %></td>
+      <td><%= f.password_field :password,placeholder:'変更の必要がない場合は記載不要です。' %></td>
     </tr>
-      <th>パスワード(確認用)</th>
-      <td><%= f.text_field :password %></td>
+    <tr>
+      <th>パスワード確認</th>
+      <td><%= f.password_field :password_confirmation,placeholder:'変更の必要がない場合は記載不要です。' %></td>
+    </tr>
+
   </tbody>
 </table>
       <%= f.submit "変更を保存する", class: "btn btn-info" %>

@@ -6,8 +6,10 @@
   <h5><%= @video.summary %></h5>
   <h5>カテゴリー<%= @video.category_id %></h5>
   <h5>ジャンル<%= @video.genre_id %></h5>
-  <%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
-  <%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+  <% if @video.user == current_user %>
+    <%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
+    <%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+  <% end %>
 　　 <!-- レビュー機能-->
     <%= form_for @review do |f| %>
       <!--作品の送信-->

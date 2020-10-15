@@ -11,7 +11,7 @@
 <% end %>
 <h2 div class="text-center">作品編集画面</h2>
 
-  <%= form_for(@video, url:videos_path(@video),method: :patch) do |f| %>
+  <%= form_for(@video) do |f| %>
   <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"300x200" %>
   <%= f.attachment_field :image %>
 

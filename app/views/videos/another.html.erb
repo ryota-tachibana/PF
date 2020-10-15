@@ -8,51 +8,7 @@
     </div>
 <!-- その他一覧表示 -->
     <div class="col-xs-9">
-      <% @videos.each do |video| %>
-        <div class="box">
-          <div>
-          <%= link_to video_path(video) do %>
-          <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"200x300" %>
-          <% end %>
-          </div>
-          <div><%= video.name %></div>
-          <div><h5><%= video.category_id %></h5></div>
-          <div><h5><%= video.genre_id %></h5></div>
-          <!-- お気に入り機能 -->
-          <% if video.favorited_by?(current_user) %>
-            <%= link_to video_favorites_path(video.id), method: :delete do %>
-              <span><%= button_tag(class: "btn btn-default btn-md") do %>
-            <%= content_tag :span, "", class: "glyphicon glyphicon-star" %>
-            <%= video.favorites.count %>
-            </span>
-              <% end %>
-            <% end %>
-          <% else %>
-            <%= link_to video_favorites_path(video.id), method: :post  do %>
-              <span><%= button_tag(class: "btn btn-default btn-md") do %>
-              <%= content_tag :span, "", class: "glyphicon glyphicon-star-empty" %>
-              <%= video.favorites.count %>
-              </span>
-              <% end %>
-            <% end %>
-          <% end %>
-          <!-- 星評価機能 -->
-         <div id="star-rating-<%= video.id %>"></div>
-          <script>
-          $('#star-rating-<%= video.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= video.reviews.size.zero? ? 0 : video.reviews.map(&:rating).sum / video.reviews.size %>,
-          });
-          </script>
-          <!-- 平均値算出　評価なしの場合は0で返す -->
-          <%= (video.reviews.size.zero? ? 0 : video.reviews.map(&:rating).sum / video.reviews.size).round(1) %>
-        </div>
-      <% end %>
+      <%= render 'videos/videos_index', videos: @videos %>
     </div>
   </div>
 </div>
