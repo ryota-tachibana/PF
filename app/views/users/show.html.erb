@@ -38,6 +38,7 @@
           <div><%= favorite.video.name %></div>
           <div><h5><%= favorite.video.category_id %></h5></div>
           <div><h5><%= favorite.video.genre_id %></h5></div>
+          <!-- お気に入り機能 -->
           <% if favorite.video.favorited_by?(current_user) %>
             <%= link_to video_favorites_path(favorite.video), method: :delete do %>
               <span><%= button_tag(class: "btn btn-default btn-md") do %>
@@ -55,6 +56,21 @@
               <% end %>
             <% end %>
           <% end %>
+          <!-- 評価機能 -->
+         <div id="star-rating-<%= favorite.video.id %>"></div>
+          <script>
+          $('#star-rating-<%= favorite.video.id %>').raty({
+            size: 36,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= favorite.video.reviews.size.zero? ? 0 : favorite.video.reviews.map(&:rating).sum / favorite.video.reviews.size %>,
+          });
+          </script>
+          <!-- 平均値算出　評価なしの場合は0で返す -->
+          <%= (favorite.video.reviews.size.zero? ? 0 : favorite.video.reviews.map(&:rating).sum / favorite.video.reviews.size).round(1) %>
         </div>
       <% end %>
     </div>
