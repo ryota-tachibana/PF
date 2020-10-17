@@ -1,0 +1,14 @@
+<div id="star-rating-<%= video.id %>"></div>
+<script>
+$('#star-rating-<%= video.id %>').raty({
+  size: 36,
+  starOff:  '<%= asset_path('star-off.png') %>',
+  starOn : '<%= asset_path('star-on.png') %>',
+  starHalf: '<%= asset_path('star-half.png') %>',
+  half: true,
+  readOnly: true,
+  score: <%= video.reviews.size.zero? ? 0 : video.reviews.map(&:rating).sum / video.reviews.size %>,
+});
+</script>
+<!-- 平均値算出　評価なしの場合は0で返す -->
+<%= (video.reviews.size.zero? ? 0 : video.reviews.map(&:rating).sum / video.reviews.size).round(1) %>
