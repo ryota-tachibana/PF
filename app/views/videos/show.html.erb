@@ -1,17 +1,45 @@
 <h2>作品詳細画面</h2>
-  <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"300x200" %>
-  <h3>作品名</h3>
-  <h3><%= @video.name %></h3>
-  <h3>あらすじ</h3>
-  <h5><%= @video.summary %></h5>
-  <h5>カテゴリー<%= @video.category_id %></h5>
-  <h5>ジャンル<%= @video.genre_id %></h5>
-  <% if @video.user == current_user %>
-    <%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
-    <%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
-  <% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2  col-xs-offset-1">
+    <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg", class: "show_video_image" %>
+    </div>
+    <div class="col-xs-7 col-xs-offset-2">
+    <table>
+      <thead>
+        <tr>
+          <th></th> 
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><h3>作品名:</h3></td>
+          <td><h3><%= @video.name %></h3></td>
+        </tr>
+        <tr>
+          <td><h4>あらすじ:</h4></td>
+          <td><h4><%= @video.summary %></h4></td>
+        </tr>
+        <tr>
+          <td><h5>カテゴリー:</h5></td>
+          <td><%= @video.category_id %></td>
+        </tr>
+        <tr>
+          <td><h5>ジャンル:</h5></td>
+          <td><%= @video.genre_id %></td>
+        </tr>
+          </tbody>
+      </table>
+      <% if @video.user == current_user %>
+        <%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
+        <%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+</div>
+</div>
 　　 <!-- レビュー機能-->
-    <%= form_for @review do |f| %>
+    <%= form_with model: @review, data: {remote: true} do |f| %>
       <!--作品の送信-->
       <%= f.hidden_field :video_id, value: @video.id %>
       <!--投稿者の送信-->
@@ -48,34 +76,12 @@
       </div>
     <% end%>
     <!-- 評価一覧 -->
-    <% @reviews.each do |review| %>
-    <div class="container">
-      <div class="row">
-        <div class="col-xs-2 col-xs-offset-1">
-        <%= attachment_image_tag (review.user), :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
-        <h3><%= review.user.name %></h3>
+    <div class='reviews'>
+      <% @reviews.each do |review| %>
+        <div class="review_<%= review.id %>">
+          <%= render 'videos/review', review: review %>
         </div>
-        <div class="col-xs-7 col-xs-offset-2">
-          <div id="star-rating-<%= review.id %>"></div>
-          <script>
-          $('#star-rating-<%= review.id %>').raty({
-            size: 36,
-            starOff:  '<%= asset_path('star-off.png') %>',
-            starOn : '<%= asset_path('star-on.png') %>',
-            starHalf: '<%= asset_path('star-half.png') %>',
-            half: true,
-            readOnly: true,
-            score: <%= review.rating %>,
-          });
-          </script>
-          <%= review.rating %>点<br>
-          <%= review.impression %>
-          <% if current_user == review.user %>
-          <%= link_to '口コミを削除', review, method: :delete, class:'btn btn-default' %>
-          <% end %>
-        </div>
-      </div>
+      <% end %>
     </div>
-    <% end %>
           <!-- ここまで -->
 

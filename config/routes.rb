@@ -14,7 +14,7 @@ resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
   end
 end
 resources :users, only: [:show, :edit, :update]
-resources :reviews, only: [:create, :edit, :update, :destroy]
+resources :reviews, only: [:create, :destroy]
 
 
 end

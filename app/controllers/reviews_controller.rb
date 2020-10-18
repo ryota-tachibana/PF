@@ -1,21 +1,12 @@
 class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
-    if @review.save
-    redirect_to request.referer
-    else
-    render 'homes/about'
-    end
-
-  end
-
-  def edit
-  end
-
-  def update
+    @review.save
   end
 
   def destroy
+    @review = Review.find(params[:id])
+    @review.destroy
   end
 
   private

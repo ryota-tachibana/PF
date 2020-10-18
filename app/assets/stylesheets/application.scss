@@ -22,13 +22,84 @@
   box-sizing: border-box;
 }
 
+// ヘッダー
+header {
+  width: 100vw;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: black;
+}
+
+ul {
+  justify-content: flex-end;
+  li {
+    list-style: none;
+  }
+  li:hover {
+    background-color: #333333;
+    a {
+      color: #CC0000;
+    }
+  }
+}
+
+.logo {
+	  width: 70px;
+      height: 60px;
+}
+
+body {
+  background-color: #f5f5f5;
+}
+
+// メイン
+main {
+  margin : 100px 0 0 0;
+}
+
+.title-box{
+  text-align: center;
+  background-color: #EEEEEE;
+}
+
 .box{
 	float: left;
-	margin-right: 30px;
-	margin-bottom: 30px;
-	background-color: grey;
+    margin: 0 20px 20px 0;
+	padding: 5px;
+	background-color: #EEEEEE;
 }
+.image{
+	  width: 160px;
+      height: 150px;
+      object-fit: cover;
+	}
 
 .container{
 	width: 100%;
+}
+
+// 作品投稿
+.image_field {
+  width: 220px;
+  text-align: center;
+  p {
+    margin-top: 10px;
+    text-align: left;
+  }
+}
+.new_video_image {
+  width: 220px;
+  height: 350px;
+
+  object-fit: cover;
+}
+
+// 作品詳細
+.show_video_image {
+  width: 220px;
+  height: 350px;
+
+  object-fit: cover;
 }

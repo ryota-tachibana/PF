@@ -8,17 +8,21 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header>
+  <body>
+  <header class="header-content">
     <% if user_signed_in? %>
-      <%= link_to 'トップ', root_path, class: "navbar-item button is-warning is-light" %>
-      <%= link_to '映画', video_videos_movie_path(:video_id), class: "navbar-item button is-warning is-light" %>
-      <%= link_to 'ドラマ', video_videos_drama_path(:video_id), class: "navbar-item button is-warning is-light" %>
-      <%= link_to 'アニメ', video_videos_animation_path(:video_id), class: "navbar-item button is-warning is-light" %>
-      <%= link_to 'その他', video_videos_another_path(:video_id), class: "navbar-item button is-warning is-light" %>
-      <%= link_to '作品登録', new_video_path, class: "navbar-item button is-warning is-light" %>
-      <%= link_to 'About', home_about_path, class: "navbar-item button is-warning is-light" %>
-      <%= link_to 'マイページ', user_path(current_user), class: "navbar-item button is-warning is-light" %>
-      <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "navbar-item button is-warning is-light" %>
+          <ul class="nav nav-pills">
+      <li><%= image_tag "logo.png", alt: "logo", id: "assets", class: "logo" %></li>
+
+      <li><%= link_to 'トップ', root_path, class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to '映画', video_videos_movie_path(:video_id), class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to 'ドラマ', video_videos_drama_path(:video_id), class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to 'アニメ', video_videos_animation_path(:video_id), class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to 'その他', video_videos_another_path(:video_id), class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to '作品登録', new_video_path, class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to 'About', home_about_path, class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to 'マイページ', user_path(current_user), class: "navbar-item button is-warning is-light" %></li>
+      <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "navbar-item button is-warning is-light" %></li>
     <% else %>
             <%= link_to 'トップ', root_path, class: "navbar-item button is-warning is-light" %>
       <%= link_to '映画', video_videos_movie_path(:video_id), class: "navbar-item button is-warning is-light" %>
@@ -29,8 +33,10 @@
       <%= link_to 'About', home_about_path, class: "navbar-item button is-warning is-light" %>
       <%= link_to 'ログイン/新規登録', new_user_session_path, class: "navbar-item button is-warning is-light" %>
     <% end %>
+  </header>
 
-  <body>
+    <main>
     <%= yield %>
+    </main>
   </body>
 </html>
