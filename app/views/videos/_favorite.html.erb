@@ -2,18 +2,18 @@
   <%= link_to video_favorites_path(video.id), method: :delete, remote: true do %>
     <span>
     <%= button_tag(class: "btn btn-default btn-md") do %>
-  <%= content_tag :span, "", class: "glyphicon glyphicon-star" %>
-  <%= video.favorites.count %>
-  </span>
+      <span class= "glyphicon glyphicon-plus-sign color-gold" ></span>
+      <%= video.favorites.count %>
+    </span>
     <% end %>
   <% end %>
 <% else %>
   <%= link_to video_favorites_path(video.id), method: :post, remote: true do %>
-    <span>
-    <%= button_tag(class: "btn btn-default btn-md") do %>
-    <%= content_tag :span, "", class: "glyphicon glyphicon-star-empty" %>
-    <%= video.favorites.count %>
-    </span>
-    <% end %>
+      <span>
+      <%= button_tag(class: "btn btn-default btn-md") do %>
+      <%= content_tag :span, "", class: "glyphicon glyphicon-plus-sign" %>
+      <%= video.favorites.count %>
+      </span>
+      <% end %>
   <% end %>
 <% end %>

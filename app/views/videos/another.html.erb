@@ -1,14 +1,15 @@
-<h2 div class="text-center">〜その他一覧〜</h2>
-
+<h2 class="title text-center">〜映画一覧〜</h2>
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
       <!-- ジャンル検索の部分テンプレート　-->
       <%= render 'videos/genre_search' %>
     </div>
-<!-- その他一覧表示 -->
+<!-- 映画一覧表示 -->
     <div class="col-xs-9">
-      <%= render 'videos/videos_index', videos: @videos %>
+    <% @videos.each do |video| %>
+      <%= render 'videos/videos_index', video: video %>
+    <% end %>
     </div>
   </div>
 </div>

@@ -22,6 +22,17 @@
   box-sizing: border-box;
 }
 
+// 共通レイアウト
+body, #wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.color-gold{
+  color: gold;
+}
+
 // ヘッダー
 header {
   width: 100vw;
@@ -29,9 +40,8 @@ header {
   z-index: 100;
   top: 0;
   left: 0;
-  background-color: black;
+  background-color: #000000;
 }
-
 ul {
   justify-content: flex-end;
   li {
@@ -44,19 +54,17 @@ ul {
     }
   }
 }
-
 .logo {
-	  width: 70px;
-      height: 60px;
+  width: 70px;
+  height: 60px;
 }
-
 body {
   background-color: #f5f5f5;
 }
 
 // メイン
 main {
-  margin : 100px 0 0 0;
+  margin : 40px 0 0 0;
 }
 
 .title-box{
@@ -64,20 +72,53 @@ main {
   background-color: #EEEEEE;
 }
 
+// フォント
+@font-face {
+  font-family: 'irohakakuC-Bold';
+  src: font-url('asset/irohakakuC-Bold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+.title{
+  font-family: 'irohakakuC-Bold';
+}
+
+// aboutページ
+.about {
+  color: #ffffff;
+  background-image: image-url('about.png');
+  height: 800px;
+  background-size:cover;
+  opacity:  0.9;
+}
+
+
+// 作品一覧画面
 .box{
 	float: left;
-    margin: 0 20px 20px 0;
+  margin: 0 20px 20px 0;
 	padding: 5px;
 	background-color: #EEEEEE;
 }
 .image{
 	  width: 160px;
-      height: 150px;
-      object-fit: cover;
-	}
+    height: 150px;
+    object-fit: cover;
+}
+
+.review-text{
+  text-align: left;
+  color: #ffa500;
+  font-size: 17px;
+}
 
 .container{
 	width: 100%;
+}
+
+// ジャンル検索
+.genre{
+  background-color: #ffffff;
 }
 
 // 作品投稿
@@ -92,7 +133,6 @@ main {
 .new_video_image {
   width: 220px;
   height: 350px;
-
   object-fit: cover;
 }
 
@@ -100,6 +140,22 @@ main {
 .show_video_image {
   width: 220px;
   height: 350px;
-
   object-fit: cover;
 }
+
+.review-form{
+  margin: 30px 100px 30px 100px;
+  background-color: #EEEEEE;
+}
+
+.review-box{
+  margin: 30px 200px 30px 200px;
+  padding-top: 20px;
+  background-color: #EEEEEE;
+}
+
+// フッター
+footer {
+  margin-top: auto;
+  background-color: #000000;
+  }

@@ -15,3 +15,8 @@
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+// aboutページフェードイン
+$(function() {
+  $('.about').hide().fadeIn(2000);
+});
