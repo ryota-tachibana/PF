@@ -39,8 +39,11 @@
     </div>
   </div>
 </div>
-
+    <% if user_signed_in? %>
     <div class="review-form">
+    <% if @video.reviewd_by?(current_user) %>
+    <h4 class="text-center">すでに投稿済みです。再度投稿する場合は、投稿を削除してください。</h4>
+    <% else %>
 　　 <!-- レビュー投稿機能-->
     <%= form_with model: @review, data: {remote: true} do |f| %>
       <!--作品の送信-->
@@ -78,7 +81,9 @@
         </div>
       </div>
     <% end%>
+    <% end%>
     </div>
+    <% end%>
     <!-- 評価一覧 -->
     <div class='reviews'>
       <% @reviews.each do |review| %>

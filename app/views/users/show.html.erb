@@ -12,11 +12,12 @@
           <td><%= @user.name %></td>
       </tr>
       <tr>
-        <th>パスワード</th>
-        <td>●●●●●●</td>
+        <th>メールアドレス</th>
+        <td><%= @user.email %></td>
       </tr>
     </table>
     <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-primary" %>
+    <%= link_to "パスワード変更", edit_user_registration_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>
@@ -24,13 +25,13 @@
 <h3>お気に入り一覧</h3>
 <% @favorites.each do |favorite| %>
   <div class="video_<%= favorite.video.id %> box"><div>
-  <%= link_to video_path(@video) do %>
-    <%= attachment_image_tag @video, :image, :fill,45,45, fallback: "noimage.jpg",size:"100x150" %>
+  <div class="image">
+  <%= link_to video_path(favorite.video) do %>
+    <%= attachment_image_tag favorite.video, :image, format: "jpg", fallback: "noimage.jpg" %>
   <% end %>
   </div>
-  <div><%= favorite.video.name %></div>
-  <div><h5><%= favorite.video.category_id %></h5></div>
-  <div><h5><%= favorite.video.genre_id %></h5></div>
+  </div>
+  <div class="video-name"><%= favorite.video.name %></div>
   <!-- お気に入り機能 -->
   <%= link_to destroy_mypage_favorite_video_favorites_path(favorite.video), method: :delete, remote: true do %>
     <span>

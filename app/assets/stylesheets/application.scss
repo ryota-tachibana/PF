@@ -72,15 +72,10 @@ main {
   background-color: #EEEEEE;
 }
 
-// フォント
-@font-face {
-  font-family: 'irohakakuC-Bold';
-  src: font-url('asset/irohakakuC-Bold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
+// タイトルフォント
 .title{
-  font-family: 'irohakakuC-Bold';
+  font-family: 'arial',sans-serif;
+  font-weight:  bold;
 }
 
 // aboutページ
@@ -101,9 +96,14 @@ main {
 	background-color: #EEEEEE;
 }
 .image{
-	  width: 160px;
-    height: 150px;
-    object-fit: cover;
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+}
+.video-name {
+  text-align: center;
+  font-size: 15px;
+  margin: 7px 0 3px ;
 }
 
 .review-text{
@@ -152,6 +152,19 @@ main {
   margin: 30px 200px 30px 200px;
   padding-top: 20px;
   background-color: #EEEEEE;
+}
+
+// パスワード編集
+.pass-edit{
+  text-align: center;
+  margin-top: 30px;
+  height: 500px; 
+  .field-p{
+  height: 100px; 
+  }
+  .field-cp{
+  height: 70px; 
+  }
 }
 
 // フッター
