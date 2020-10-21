@@ -1,5 +1,5 @@
 class VideosController < ApplicationController
-
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   def movie
     @videos = Video.where(category_id: "0")
     @category_name = "映画"

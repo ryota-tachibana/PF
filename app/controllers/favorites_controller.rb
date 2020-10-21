@@ -1,4 +1,5 @@
 class FavoritesController < ApplicationController
+  before_action :authenticate_user!
   def create
     @video = Video.find(params[:video_id])
     favorite = @video.favorites.new(user_id: current_user.id)

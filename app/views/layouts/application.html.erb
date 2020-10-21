@@ -32,13 +32,11 @@
         <li><%= link_to 'ドラマ', video_videos_drama_path(:video_id), class: "navbar-item button is-warning is-light" %></li>
         <li><%= link_to 'アニメ', video_videos_animation_path(:video_id), class: "navbar-item button is-warning is-light" %></li>
         <li><%= link_to 'その他', video_videos_another_path(:video_id), class: "navbar-item button is-warning is-light" %></li>
-        <li><%= link_to '作品登録', new_video_path, class: "navbar-item button is-warning is-light" %></li>
         <li><%= link_to 'About', home_about_path, class: "navbar-item button is-warning is-light" %></li>
         <li><%= link_to 'ログイン/新規登録', new_user_session_path, class: "navbar-item button is-warning is-light" %></li>
       </ul>
     <% end %>
   </header>
-
     <main>
     <%= yield %>
     </main>
