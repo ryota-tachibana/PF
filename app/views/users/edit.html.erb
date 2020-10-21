@@ -1,27 +1,27 @@
 <h2 class="text-center">マイページ編集</h2>
 <div class="container">
   <div class="row">
-    <div class="col-xs-3 col-xs-offset-2">
     <%= form_for @user, url:user_path(@user.id) do |f| %>
-      <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
-      <%= f.attachment_field :profile_image %>
-    </div>
-    <div class="col-xs-7">
-      <table>
-        <tbody>
-          <tr>
-            <th width="150">ニックネーム</th>
-            <td height="60"><%= f.text_field :name, :size=>"30x10" %></td>
-          </tr>
-          <tr>
-            <th>メールアドレス</th>
-            <td height="60"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"30x10" %></td>
-          </tr>
-        </tbody>
-      </table>
-      <%= f.submit "変更を保存する", class: "btn btn-info" %>
-      <h5><%= link_to "＜戻る", :back %></h5>
-    </div>
+      <div class="col-xs-3 col-xs-offset-2">
+        <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
+        <%= f.attachment_field :profile_image %>
+      </div>
+      <div class="col-xs-7">
+        <table>
+          <tbody>
+            <tr>
+              <th width="150">ニックネーム</th>
+              <td height="60"><%= f.text_field :name, :size=>"30x10" %></td>
+            </tr>
+            <tr>
+              <th>メールアドレス</th>
+              <td height="60"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"30x10" %></td>
+            </tr>
+          </tbody>
+        </table>
+        <%= f.submit "変更を保存する", class: "btn btn-info" %>
+        <h5><%= link_to "＜戻る", :back %></h5>
+      </div>
     <% end %>
   </div>
 </div>

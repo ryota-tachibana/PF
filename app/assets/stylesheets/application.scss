@@ -84,7 +84,19 @@ main {
   background-image: image-url('about.png');
   height: 800px;
   background-size:cover;
-  opacity:  0.9;
+  opacity:  0.7;
+
+  .about-title{
+  margin-bottom: 30px;
+  }
+
+  .about-text{
+  margin: 10px 0;
+  }
+
+  .about-title-sab{
+  margin: 60px 0 20px;
+  }
 }
 
 
