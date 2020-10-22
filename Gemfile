@@ -74,6 +74,7 @@ gem 'enum_help'
 gem 'devise-i18n'
 gem 'devise-i18n-views'
 gem 'pry-rails'
+gem 'kaminari','~> 1.2.1'
 
 gem 'dotenv-rails'
 group :production do
