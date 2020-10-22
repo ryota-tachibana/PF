@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row video-search">
+	<h2 class="text-center">検索結果</h2>
+	<div class="search-form">
+	  <%= render 'videos/search_form' %>
+	</div>
+	<% if @result.exists? %>
+	  <% if @model == 'video' %>
+	    <%= render 'videos/video_search_index', video: @result %>
+	  <% else %>
+		<h3>見つかりませんでした。検索条件を変更して再度お試しください。</h3>
+	  <% end %>
+	<% end %>
+  </div>
+  <h5><%= link_to "戻る", :back, class: "glyphicon glyphicon-circle-arrow-left" %></h5>
+</div>

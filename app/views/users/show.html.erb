@@ -1,37 +1,37 @@
-<h2 div class="text-center">マイページ</h2>
-<div class="container">
+<h2 class="title text-center">マイページ</h2>
+<div class="container my-box">
   <div class="row">
-    <div class="col-xs-2 col-xs-offset-1">
-    <h4>登録情報</h4>
-    <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
+    <div class="col-xs-2 col-xs-offset-3">
+      <h4>登録情報</h4>
+      <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
     </div>
-    <div class="col-xs-7 col-xs-offset-2">
-    <table class="table table-bordered">
-      <tr>
-        <th>ニックネーム</th>
-          <td><%= @user.name %></td>
-      </tr>
-      <tr>
-        <th>メールアドレス</th>
-        <td><%= @user.email %></td>
-      </tr>
-    </table>
-    <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-primary" %>
-    <%= link_to "パスワード変更", edit_user_registration_path, class: "btn btn-primary" %>
+    <div class="col-xs-5">
+      <table class="table table-bordered">
+        <tr>
+          <th>ニックネーム</th>
+            <td><%= @user.name %></td>
+        </tr>
+        <tr>
+          <th>メールアドレス</th>
+            <td><%= @user.email %></td>
+        </tr>
+      </table>
+      <%= link_to "編集", edit_user_path(current_user.id), class: "btn btn-primary" %>
+      <%= link_to "パスワード変更", edit_user_registration_path, class: "btn btn-primary" %>
     </div>
   </div>
 </div>
 
-<h3>お気に入り一覧</h3>
+<h3 class="text-center">お気に入り一覧</h3>
 <% @favorites.each do |favorite| %>
   <div class="video_<%= favorite.video.id %> box"><div>
-  <div class="image">
-  <%= link_to video_path(favorite.video) do %>
-    <%= attachment_image_tag favorite.video, :image, format: "jpg", fallback: "noimage.jpg" %>
-  <% end %>
+    <div class="image">
+      <%= link_to video_path(favorite.video) do %>
+        <%= attachment_image_tag favorite.video, :image, format: "jpg", fallback: "noimage.jpg" %>
+      <% end %>
+    </div>
   </div>
-  </div>
-  <div class="video-name"><%= favorite.video.name %></div>
+  <div class="video-name"><%= truncate(favorite.video.name, length:10) %></div>
   <!-- お気に入り機能 -->
   <%= link_to destroy_mypage_favorite_video_favorites_path(favorite.video), method: :delete, remote: true do %>
     <span>
@@ -47,10 +47,10 @@
     <%= button_tag(class: "btn btn-default btn-md") do %>
       <%= image_tag 'star-on.png', class: "star-on" %>
       <%= (favorite.video.reviews.size.zero? ? 0 : favorite.video.reviews.map(&:rating).sum / favorite.video.reviews.size).round(1) %>
-    </span>
     <% end %>
+    </span>
   <% end %>
   </div>
 <% end %>
- 
+
 

@@ -11,7 +11,7 @@ class Video < ApplicationRecord
   validates :genre_id, presence:true
   validates :category_id, presence: true
   validates :name, presence:true
-  validates :image_id, presence:true
+  validates :image, presence:true
   validates :summary, presence:true, length: {minimum: 10}
 
   def favorited_by?(user)

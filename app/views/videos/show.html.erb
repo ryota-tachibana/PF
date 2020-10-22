@@ -1,97 +1,97 @@
-<h2>作品詳細画面</h2>
-<%= flash[:error] %>
 <div class="container">
-  <div class="row">
+  <div class="row show-video-box">
     <div class="col-xs-2  col-xs-offset-1">
-    <%= attachment_image_tag @video, :image, format: "jpg", fallback: "noimage.jpg", class: "show_video_image" %>
+      <%= attachment_image_tag @video, :image, format: "jpg", fallback: "noimage.jpg", class: "show_video_image" %>
     </div>
     <div class="col-xs-7 col-xs-offset-2">
-        <h3>作品名</h3>
-        <h3><%= @video.name %></h3>
-        <h4>あらすじ</h4>
-        <h4><%= @video.summary %></h4>
-        <h5>カテゴリー:<%= @video.category_id %></h5>
-        <h5>ジャンル:<%= @video.genre_id %></h5>
-          <div class="row">
-            <div class="col-xs-3">
-              <!-- 星評価表示 -->
-              <div id="star-rating-<%= @video.id %>"></div>
-                <script>
-                $('#star-rating-<%= @video.id %>').raty({
-                size: 36,
-                starOff:  '<%= asset_path('star-off.png') %>',
-                starOn : '<%= asset_path('star-on.png') %>',
-                starHalf: '<%= asset_path('star-half.png') %>',
-                half: true,
-                readOnly: true,
-                score: <%= @video.reviews.size.zero? ? 0 : @video.reviews.map(&:rating).sum / @video.reviews.size %>,
-                });
-                </script>
-              </div>
-              <div class="review-text col-xs-9">
-                <!-- 平均値算出　評価なしの場合は0で返す -->
-                <%= (@video.reviews.size.zero? ? 0 : @video.reviews.map(&:rating).sum / @video.reviews.size).round(1) %>
-              </div>
-          </div>
-        <% if @video.user == current_user %>
-          <%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
-          <%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
-        <% end %>
+      <h3 class="show-info">作品名：<%= @video.name %></h3>
+      <h4>あらすじ</h4>
+      <h5 class="show-info"><%= @video.summary %></h5>
+      <h5 class="show-info">カテゴリー：<%= @video.category_id %></h5>
+      <h5 class="show-info">ジャンル：<%= @video.genre_id %></h5>
+      <div class="row">
+        <div class="col-xs-3">
+          <!-- 星評価表示 -->
+          <div id="star-rating-<%= @video.id %>"></div>
+            <script>
+            $('#star-rating-<%= @video.id %>').raty({
+            size: 45,
+            starOff:  '<%= asset_path('star-off.png') %>',
+            starOn : '<%= asset_path('star-on.png') %>',
+            starHalf: '<%= asset_path('star-half.png') %>',
+            half: true,
+            readOnly: true,
+            score: <%= @video.reviews.size.zero? ? 0 : @video.reviews.map(&:rating).sum / @video.reviews.size %>,
+            });
+            </script>
+        </div>
+        <div class="review-text col-xs-2">
+          <!-- 平均値算出　評価なしの場合は0で返す -->
+          <%= (@video.reviews.size.zero? ? 0 : @video.reviews.map(&:rating).sum / @video.reviews.size).round(1) %>
+        </div>
+        <div class="review-text col-xs-5 col-xs-offset-2">
+          <% if @video.user == current_user %>
+            <%= link_to "編集", edit_video_path(@video.id), class: "btn btn-primary" %>
+            <%= link_to "削除", video_path(@video.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-    <% if user_signed_in? %>
-    <div class="review-form">
+
+<% if user_signed_in? %>
+  <div class="review-form">
     <% if @video.reviewd_by?(current_user) %>
-    <h4 class="text-center">すでに投稿済みです。再度投稿する場合は、投稿を削除してください。</h4>
+      <h4 class="text-center">すでに投稿済みです。再度投稿する場合は、投稿を削除してください。</h4>
     <% else %>
-　　 <!-- レビュー投稿機能-->
-    <%= form_with model: @review, data: {remote: true} do |f| %>
-      <!--作品の送信-->
-      <%= f.hidden_field :video_id, value: @video.id %>
-      <!--投稿者の送信-->
-      <%= f.hidden_field :user_id, value: @user.id %>
-      <!-- 評価 -->
-      <div class="form-group row" id="star">
-        <h4><%= f.label :rating,'評価 ', class:'col-md-1 col-md-offset-2' %></h4>
-        <%= f.hidden_field :rating, id: :review_star %>
-      </div>
-      <!-- 評価javascript -->
-      <script>
-      $('#star').raty({
-      	size     : 36,
-      	starOff:  '<%= asset_path('star-off.png') %>',
-      	starOn:  '<%= asset_path('star-on.png') %>',
-        starHalf:  '<%= asset_path('star-half') %>',
-        scoreName: 'review[rating]',
-        half: true,
-      });
-      </script>
-      <!-- 感想 -->
-      <div class="form-group row">
-      <h4><%= f.label :impression, '感想 ', class:'col-md-1 col-md-offset-2' %></h4>
-        <div class="col-md-6">
-        <%= f.text_area :impression, class: "form-control",
-            placeholder:'感想内容がなくても、評価のみで投稿できます。' %>
+      <!-- レビュー投稿機能-->
+      <%= form_with model: @review, data: {remote: true} do |f| %>
+        <!--作品の送信-->
+        <%= f.hidden_field :video_id, value: @video.id %>
+        <!--投稿者の送信-->
+        <%= f.hidden_field :user_id, value: @user.id %>
+        <!-- 評価 -->
+        <div class="form-group row" id="star">
+          <h4><%= f.label :rating,'評価 ', class:'col-md-1 col-md-offset-2' %></h4>
+          <%= f.hidden_field :rating, id: :review_star %>
         </div>
-      </div>
-      <!-- 送信ボタン -->
-      <div class="form-group row justify-content-end">
-        <div class='col-md-1 col-md-offset-8'>
-        <%= f.submit '投稿する', class:"btn btn-success" %>
+        <!-- 評価javascript -->
+        <script>
+        $('#star').raty({
+        	size     : 36,
+        	starOff:  '<%= asset_path('star-off.png') %>',
+        	starOn:  '<%= asset_path('star-on.png') %>',
+          starHalf:  '<%= asset_path('star-half') %>',
+          scoreName: 'review[rating]',
+          half: true,
+        });
+        </script>
+        <!-- 感想 -->
+        <div class="form-group row">
+          <h4><%= f.label :impression, '感想 ', class:'col-md-1 col-md-offset-2' %></h4>
+          <div class="col-md-6">
+            <%= f.text_area :impression, class: "form-control",
+              placeholder:'感想内容がなくても、評価のみで投稿できます。' %>
+          </div>
         </div>
-      </div>
-    <% end%>
-    <% end%>
-    </div>
-    <% end%>
-    <!-- 評価一覧 -->
-    <div class='reviews'>
-      <% @reviews.each do |review| %>
-        <div class="review_<%= review.id %>">
-          <%= render 'videos/review', review: review %>
+        <!-- 送信ボタン -->
+        <div class="form-group row justify-content-end">
+          <div class='col-md-1 col-md-offset-8'>
+          <%= f.submit '投稿する', class:"btn btn-success" %>
+          </div>
         </div>
       <% end %>
+    <% end %>
+  </div>
+<% end %>
+<!-- 評価一覧 -->
+<div class='reviews'>
+  <% @reviews.each do |review| %>
+    <div class="review_<%= review.id %>">
+      <%= render 'videos/review', review: review %>
     </div>
-          <!-- ここまで -->
+  <% end %>
+</div>
+
 

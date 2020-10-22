@@ -5,7 +5,7 @@
 
 
   <div class="field-p">
-    <%= f.label :password, "パスワード" %>
+    <%= f.label :password, "新しいパスワード" %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %>文字以上)</em><br />
     <% end %>
@@ -14,22 +14,22 @@
 
     <div class="field-p">
       <%= f.label :password_confirmation, "新しいパスワード(確認用)" %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", :size=>"40" %>
     </div>
 
     <div class="field-cp">
       <%= f.label :current_password, "現在のパスワード" %><br />
-      <%= f.password_field :current_password, autocomplete: "current-password" %>
+      <%= f.password_field :current_password, autocomplete: "current-password", :size=>"40" %>
     </div>
 
     <div class="actions">
-      <%= f.submit "更新" %>
+      <%= f.submit "更新", class: "btn btn-info" %>
     </div>
 <% end %>
+  <h5><%= link_to "＜戻る", :back %></h5>
+  <h3>アカウント削除</h3>
 
-  <h3>アカウントを削除する</h3>
+  <p> <%= button_to "削除", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか？" }, method: :delete, class: "btn btn-danger" %></p>
 
-  <p> <%= button_to "削除", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete %></p>
 
-  <h4><%= link_to "＜戻る", :back %></h4>
 </div>

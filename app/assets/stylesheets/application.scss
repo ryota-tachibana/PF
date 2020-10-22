@@ -76,6 +76,16 @@ main {
 .title{
   font-family: 'arial',sans-serif;
   font-weight:  bold;
+  margin-bottom: 40px;
+}
+
+// トップページ
+.favorite-ranking {
+  margin: 20px 0;
+}
+.rankingbox{
+  border-bottom: solid 5px #444444;
+  border-top: solid 5px #444444;
 }
 
 // aboutページ
@@ -106,26 +116,24 @@ main {
   margin: 0 20px 20px 0;
 	padding: 5px;
 	background-color: #EEEEEE;
+  .image{
+    width: 160px;
+    height: 200px;
+    object-fit: cover;
+  }
+  .video-name {
+    text-align: center;
+    font-size: 15px;
+    margin: 7px 0 3px ;
+  }
+  .review-text{
+    text-align: left;
+    color: #ffa500;
+    font-size: 17px;
+  }
 }
-.image{
-  width: 160px;
-  height: 200px;
-  object-fit: cover;
-}
-.video-name {
-  text-align: center;
-  font-size: 15px;
-  margin: 7px 0 3px ;
-}
-
-.review-text{
-  text-align: left;
-  color: #ffa500;
-  font-size: 17px;
-}
-
-.container{
-	width: 100%;
+.image:hover {
+  opacity:  0.8;
 }
 
 // ジャンル検索
@@ -149,10 +157,16 @@ main {
 }
 
 // 作品詳細
+.show-video-box{
+  margin: 80px;
+}
 .show_video_image {
   width: 220px;
   height: 350px;
   object-fit: cover;
+}
+.show-info {
+  margin-bottom: 30px;
 }
 
 .review-form{
@@ -166,6 +180,11 @@ main {
   background-color: #EEEEEE;
 }
 
+//マイページ
+.my-box{
+  margin-bottom: 100px;
+}
+
 // パスワード編集
 .pass-edit{
   text-align: center;
@@ -177,6 +196,20 @@ main {
   .field-cp{
   height: 70px; 
   }
+}
+
+// 検索
+.video-search{
+  margin-top: 60px;
+}
+.search-form{
+  margin: 0 120px 30px 0;
+  text-align: right;
+}
+
+// ログイン
+.actions{
+  margin: 30px 0 ;
 }
 
 // フッター

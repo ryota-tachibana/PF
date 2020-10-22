@@ -1,10 +1,21 @@
-<h2 class="title text-center">〜ランキング一覧〜</h2>
+<h2 class="title text-center">〜評価ランキング〜</h2>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 rankingbox">
+  	<div class="favorite-ranking">
+      <% @rankings.each do |video| %>
+        <%= render 'videos/videos_index', video: video %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<div class="container">
-  <div class="row">
-  <% @rankings.each do |video| %>
-
-      <%= render 'videos/videos_index', video: video %>
-    <% end %>
+<h2 class="title text-center">〜お気に入りランキング〜</h2>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1 rankingbox">
+  	<div class="favorite-ranking">
+      <% @favorite_rankings.each do |video| %>
+        <%= render 'videos/videos_index', video: video %>
+      <% end %>
+    </div>
   </div>
 </div>

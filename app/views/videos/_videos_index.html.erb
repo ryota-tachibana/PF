@@ -4,7 +4,7 @@
   <%= attachment_image_tag video, :image, format: "jpg", fallback: "noimage.jpg" %>
   <% end %>
   </div>
-  <div class="video-name"><%= video.name %></div>
+  <div class="video-name"><%= truncate(video.name, length:10) %></div>
   <!-- お気に入り機能 -->
   <div class="row">
     <div class="col-xs-4 col-xs-offset-1">
