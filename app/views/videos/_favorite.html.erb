@@ -1,19 +1,30 @@
-<% if video.favorited_by?(current_user) %>
-  <%= link_to video_favorites_path(video.id), method: :delete, remote: true do %>
-    <span>
-    <%= button_tag(class: "btn btn-default btn-md") do %>
-      <span class= "glyphicon glyphicon-plus-sign color-gold" ></span>
-      <%= video.favorites.count %>
-    </span>
+<% if user_signed_in? %>
+  <% if video.favorited_by?(current_user) %>
+    <%= link_to video_favorites_path(video.id), method: :delete, remote: true do %>
+      <span>
+      <%= button_tag(class: "btn btn-default btn-md") do %>
+        <span class= "glyphicon glyphicon-plus-sign color-gold" ></span>
+        <%= video.favorites.count %>
+      </span>
+      <% end %>
+    <% end %>
+  <% else %>
+    <%= link_to video_favorites_path(video.id), method: :post, remote: true do %>
+        <span>
+        <%= button_tag(class: "btn btn-default btn-md") do %>
+        <span class= "glyphicon glyphicon-plus-sign" ></span>
+        <%= video.favorites.count %>
+        </span>
+        <% end %>
     <% end %>
   <% end %>
 <% else %>
-  <%= link_to video_favorites_path(video.id), method: :post, remote: true do %>
+    <%= link_to user_session_path do %>
       <span>
       <%= button_tag(class: "btn btn-default btn-md") do %>
-      <%= content_tag :span, "", class: "glyphicon glyphicon-plus-sign" %>
-      <%= video.favorites.count %>
+        <span class= "glyphicon glyphicon-plus-sign" ></span>
+        <%= video.favorites.count %>
       </span>
       <% end %>
-  <% end %>
+    <% end %>
 <% end %>

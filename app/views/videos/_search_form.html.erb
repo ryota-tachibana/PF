@@ -1,7 +1,7 @@
 <%= form_tag(video_search_path, method: :get) do %>
 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
   <%= text_field_tag "search[content]","",size: "40",placeholder: "カテゴリー/ジャンル関係なく検索できます" %>
-  <%= select_tag "search[model]", options_for_select({ "映画" => "video" }) %>
+  <%= select_tag "search[model]", options_for_select({ "作品" => "video" }) %>
   <%= select_tag "search[method]", options_for_select({ "部分一致" => "partial", "前方一致" => "forward", "後方一致" => "backward", "完全一致" => "perfect" }) %>
   <%= submit_tag '検索', class: "btn btn-primary" %>
 <% end %>

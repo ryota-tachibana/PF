@@ -1,10 +1,6 @@
 <h2 class="text-center">ログイン</h2>
 <div class="pass-edit">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field-p">
-    <h4><%= f.label :ニックネーム %><br /></h4>
-    <%= f.text_field :name, autofocus: true, autocomplete: "name", :size=>"40" %>
-  </div>
 
   <div class="field-p">
     <h4><%= f.label :メールアドレス %><br /></h4>

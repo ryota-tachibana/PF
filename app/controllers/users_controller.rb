@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_current_user
   def show
   @user = User.find(params[:id])
   @video = Video.find(params[:id])
@@ -19,6 +20,13 @@ class UsersController < ApplicationController
   private
   def user_params
     params.require(:user).permit(:name, :password, :profile_image)
+  end
+
+  def  ensure_current_user
+       @user = User.find(params[:id])
+    if @user.id != current_user.id
+     redirect_to user_path(current_user.id)
+   end
   end
 
 end

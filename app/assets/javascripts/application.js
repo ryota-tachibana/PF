@@ -16,7 +16,19 @@
 //= require turbolinks
 //= require_tree .
 
-// aboutページフェードイン
-$(function() {
-  $('.about').hide().fadeIn(2000);
+
+// $(function() {
+//   $('.about').hide().fadeIn(2000);
+// });
+
+
+$(document).on('turbolinks:load', function() {
+	// aboutページフェードイン
+	$('.about').hide().fadeIn(2000);
+
+    $('.accordion-content').hide();
+
+    $('.accordion-click').click(function() {
+        $(this).next().slideToggle();
+    });
 });

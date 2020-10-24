@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_06_071952) do
+ActiveRecord::Schema.define(version: 2020_10_24_071049) do
 
   create_table "favorites", force: :cascade do |t|
     t.integer "user_id"
@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 2020_10_06_071952) do
     t.text "impression"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "spoiler"
   end
 
   create_table "users", force: :cascade do |t|

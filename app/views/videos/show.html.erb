@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container show-page">
   <div class="row show-video-box">
     <div class="col-xs-2  col-xs-offset-1">
       <%= attachment_image_tag @video, :image, format: "jpg", fallback: "noimage.jpg", class: "show_video_image" %>
@@ -71,14 +71,20 @@
         <div class="form-group row">
           <h4><%= f.label :impression, '感想 ', class:'col-md-1 col-md-offset-2' %></h4>
           <div class="col-md-6">
-            <%= f.text_area :impression, class: "form-control",
+            <%= f.text_area :impression, size: "80x5",
               placeholder:'感想内容がなくても、評価のみで投稿できます。' %>
           </div>
         </div>
         <!-- 送信ボタン -->
         <div class="form-group row justify-content-end">
-          <div class='col-md-1 col-md-offset-8'>
-          <%= f.submit '投稿する', class:"btn btn-success" %>
+          <div class='col-md-3 col-md-offset-5'>
+            <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+            ネタバレあり
+              <%= f.check_box :spoiler, {}, "true", nil %>
+            </span>
+          </div>
+          <div class='col-md-3'>
+            <%= f.submit '投稿する', class:"btn btn-success" %>
           </div>
         </div>
       <% end %>
