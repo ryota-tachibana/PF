@@ -1,10 +1,15 @@
 <h2 class="text-center">マイページ編集</h2>
 <div class="container">
   <div class="row">
-    <%= form_for @user, url:user_path(@user.id) do |f| %>
+    <%= form_for @user, url:user_path(@user.id), method: :patch do |f| %>
       <div class="col-xs-3 col-xs-offset-2">
         <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
-        <%= f.attachment_field :profile_image %>
+        <div class="image_btn">
+          <%= f.attachment_field :profile_image, id: "file" %>
+        </div>
+        <div id="img_field" onClick="$('#file').click()" >
+          <span class="btn btn-default">画像選択</span>
+        </div>
       </div>
       <div class="col-xs-7">
         <table>

@@ -8,11 +8,11 @@ class Video < ApplicationRecord
 
   attachment :image
 
-  validates :genre_id, presence:true
+  validates :genre_id, presence: true
   validates :category_id, presence: true
-  validates :name, presence:true
-  validates :image, presence:true
-  validates :summary, presence:true, length: {minimum: 10}
+  validates :name, presence: true
+  validates :image, presence: true
+  validates :summary, presence: true, length: {minimum: 10}
 
   def favorited_by?(user)
     if user.nil? #未ログインの場合falseで返す

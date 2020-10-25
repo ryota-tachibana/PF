@@ -126,11 +126,11 @@ main {
     font-size: 15px;
     margin: 7px 0 3px ;
   }
-  .review-text{
-    text-align: left;
-    color: #ffa500;
-    font-size: 17px;
-  }
+}
+.review-text {
+  text-align: left;
+  color: #FFA500;
+  font-size: 20px;
 }
 .image:hover {
   opacity:  0.8;
@@ -187,6 +187,9 @@ main {
   margin: 30px 200px 30px 200px;
   padding-top: 20px;
   background-color: #EEEEEE;
+}
+.accordion-click{
+  width: 100px;
 }
 
 //マイページ
