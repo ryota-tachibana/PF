@@ -1,0 +1,24 @@
+ja:
+  activerecord:
+    attributes:
+      review:
+        rating: "星評価"
+      user:
+        email: "メールアドレス"
+        name: "ニックネーム"
+        password: "パスワード"
+        password_confirmation: "パスワード(確認用)"
+        current_password: "現在のパスワード"
+        profile_image_id: "プロフィール画像"
+      video:
+        name: "作品名"
+        genre_id: "ジャンル"
+        category_id: "カテゴリー"
+        image: "画像"
+        summary: "あらすじ"
+  views:
+    pagination:
+      first: "≪"
+      previous: "<"
+      next: ">"
+      last: "≫"
