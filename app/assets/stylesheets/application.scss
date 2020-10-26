@@ -41,10 +41,6 @@ body, #wrapper {
     font-size: 20px;
     font-weight: bold;
   }
-  ul {
-    padding-left: 50px;
-    list-style: circle;
-  }
 }
 
 // ヘッダー
@@ -55,23 +51,26 @@ header {
   top: 0;
   left: 0;
   background-color: #000000;
-}
-ul {
-  justify-content: flex-end;
-  li {
-    list-style: none;
-  }
-  li:hover {
-    background-color: #333333;
-    a {
-      color: #CC0000;
+  ul {
+    justify-content: flex-end;
+    font-size: 16px;
+    li {
+      list-style: none;
+    }
+    li:hover {
+      background-color: #333333;
+      a {
+        color: #CC0000;
+      }
     }
   }
 }
 .logo {
-  width: 70px;
+  width: 60px;
   height: 60px;
 }
+
+//ボディ
 body {
   background-color: #f5f5f5;
 }
@@ -80,7 +79,6 @@ body {
 main {
   margin : 40px 0 0 0;
 }
-
 .title-box{
   text-align: center;
   background-color: #EEEEEE;
@@ -108,21 +106,16 @@ main {
   background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),image-url('about.png');
   height: 800px;
   background-size:cover;
-
-
   .about-title{
   margin-bottom: 30px;
   }
-
   .about-text{
   margin: 10px 0;
   }
-
   .about-title-sab{
   margin: 200px 0 20px;
   }
 }
-
 
 // 作品一覧画面
 .box{
@@ -171,9 +164,7 @@ main {
 }
 .image_btn{
     display: none;
-}#元の送信ボタンを隠す
-
-
+}
 
 // 作品詳細
 .show-page{
@@ -190,13 +181,11 @@ main {
 .show-info {
   margin-bottom: 30px;
 }
-
 .review-form{
   margin: 30px 100px 30px 100px;
   background-color: #EEEEEE;
   word-wrap:break-word;
 }
-
 .review-box{
   margin: 30px 200px 30px 200px;
   padding-top: 20px;
@@ -209,18 +198,41 @@ main {
 //マイページ
 .my-box{
   margin-bottom: 100px;
+  .my-info{
+    margin-top: 30px;
+  }
+}
+
+//マイページ編集
+.my_image{
+  width: 150px;
+  height: 150px;
+}
+.img_button{
+  margin-left: 30px;
+}
+.my-edit-table{
+  margin: 20px 0 30px;
 }
 
 // パスワード編集
 .pass-edit{
   text-align: center;
   margin-top: 30px;
-  height: 500px; 
+  height: 660px; 
   .field-p{
-  height: 100px; 
+    height: 100px; 
   }
   .field-cp{
-  height: 70px; 
+    height: 70px; 
+  }
+  .account-delete{
+    margin: 50px auto; 
+    width: 400px;
+    background-color: #FFDBC9;
+    border: solid;
+    border-radius: 8px;
+    border-color: #FF6600;
   }
 }
 
@@ -242,4 +254,4 @@ main {
 footer {
   margin-top: auto;
   background-color: #000000;
-  }
+}

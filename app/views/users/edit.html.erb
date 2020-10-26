@@ -5,28 +5,30 @@
     <%= render 'users/error_message', resource: @user %>
     <%= form_for @user, url:user_path(@user.id), method: :patch do |f| %>
       <div class="col-xs-3 col-xs-offset-2">
-        <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
+        <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg", class: "my_image" %>
         <div class="image_btn">
           <%= f.attachment_field :profile_image, id: "file" %>
         </div>
         <div id="img_field" onClick="$('#file').click()" >
-          <span class="btn btn-default">画像選択</span>
+          <span class="img_button btn btn-default">画像選択</span>
         </div>
       </div>
       <div class="col-xs-7">
         <table>
           <tbody>
             <tr>
-              <th width="150">ニックネーム</th>
+              <th width="150"><%= f.label :name, "ニックネーム" %></th>
               <td height="60"><%= f.text_field :name, :size=>"30x10" %></td>
             </tr>
             <tr>
-              <th>メールアドレス</th>
-              <td height="60"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"30x10" %></td>
+              <th><%= f.label :email, "メールアドレス" %></th>
+              <td height="100"><%= f.email_field :email, autocomplete: "email", :size=>"30x10" %></td>
             </tr>
           </tbody>
         </table>
+        <div class="my-edit-table">
         <%= f.submit "変更を保存する", class: "btn btn-info" %>
+        </div>
         <h4><%= link_to "戻る", :back, class: "glyphicon glyphicon-circle-arrow-left" %></h4>
       </div>
     <% end %>

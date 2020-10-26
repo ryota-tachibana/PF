@@ -1,13 +1,10 @@
-<h2 class="text-center">パスワード編集</h2>
+<h2 class="title text-center">パスワード編集</h2>
 <div class="pass-edit">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= render "users/error_message", resource: resource %>
 
   <div class="field-p">
-    <%= f.label :password, "新しいパスワード" %>
-    <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %>文字以上)</em><br />
-    <% end %>
+    <%= f.label :password, "新しいパスワード(#{@minimum_password_length}文字以上)" %><br />
     <%= f.password_field :password, autocomplete: "new-password", :size=>"40" %>
   </div>
 
@@ -27,6 +24,9 @@
   <% end %>
   
   <h4><%= link_to "戻る", :back, class: "glyphicon glyphicon-circle-arrow-left" %></h4>
-  <h3>アカウント削除</h3>
-  <p> <%= button_to "削除", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか？" }, method: :delete, class: "btn btn-danger" %></p>
+
+  <div class="account-delete">
+    <h3>アカウント削除</h3>
+    <p> <%= button_to "削除", registration_path(resource_name), data: { confirm: "本当に削除してもよろしいですか？" }, method: :delete, class: "btn btn-danger" %></p>
+  </div>
 </div>

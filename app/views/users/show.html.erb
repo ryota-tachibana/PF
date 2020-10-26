@@ -5,7 +5,7 @@
       <h4>登録情報</h4>
       <%= attachment_image_tag @user, :profile_image, :fill,45,45, fallback: "no_image.jpg",size:"100x100" %>
     </div>
-    <div class="col-xs-5">
+    <div class="col-xs-5 my-info">
       <table class="table table-bordered">
         <tr>
           <th>ニックネーム</th>
@@ -52,5 +52,5 @@
   <% end %>
   </div>
 <% end %>
-
+<div class="text-center"><h4><%= paginate @favorites %></h4></div>
 
