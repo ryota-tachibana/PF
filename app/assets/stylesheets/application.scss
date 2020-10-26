@@ -91,10 +91,10 @@ main {
 // aboutページ
 .about {
   color: #ffffff;
-  background-image: image-url('about.png');
+  background-image: linear-gradient(rgba(0, 0, 0, .5), rgba(0, 0, 0, .5)),image-url('about.png');
   height: 800px;
   background-size:cover;
-  opacity:  0.7;
+
 
   .about-title{
   margin-bottom: 30px;
@@ -105,7 +105,7 @@ main {
   }
 
   .about-title-sab{
-  margin: 60px 0 20px;
+  margin: 200px 0 20px;
   }
 }
 
@@ -129,7 +129,7 @@ main {
 }
 .review-text {
   text-align: left;
-  color: #FFA500;
+  color: #DAA520;
   font-size: 20px;
 }
 .image:hover {
