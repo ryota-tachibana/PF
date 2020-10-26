@@ -28,9 +28,23 @@ body, #wrapper {
   flex-direction: column;
   min-height: 100vh;
 }
-
 .color-gold{
   color: gold;
+}
+
+//エラーメッセージ
+#error_explanation {
+  color: red;
+  text-align: center;
+  padding-bottom: 20px;
+  h2 {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  ul {
+    padding-left: 50px;
+    list-style: circle;
+  }
 }
 
 // ヘッダー

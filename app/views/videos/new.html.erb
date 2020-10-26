@@ -1,15 +1,6 @@
-<% if @video.errors.any? %>
-
-    <%= @video.errors.count %>errors prohibited this obj from being saved:
-
-    <ul>
-      <% @video.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-
-<% end %>
 <h2 class="title text-center">作品登録</h2>
+<!--  エラーメッセージ-->
+<%= render 'users/error_message', resource: @video %>
 <div class="container">
   <div class="row">
   <%= form_for(@video, url:videos_path, method: :post) do |f| %>
