@@ -40,4 +40,3 @@ https://docs.google.com/spreadsheets/d/1WVxE70uJKbcqjEiZ8G5pW2y3u0L6AHwWi5Tx5F-s
 - JSライブラリ：jQuery<br>
 - 仮想環境：Vagrant,VirtualBox
 
-## 使用素材
