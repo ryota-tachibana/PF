@@ -5,26 +5,26 @@
       <%= button_tag(class: "btn btn-default btn-md") do %>
         <span class= "glyphicon glyphicon-plus-sign color-gold" ></span>
         <%= video.favorites.count %>
-      </span>
       <% end %>
+      </span>
     <% end %>
   <% else %>
     <%= link_to video_favorites_path(video.id), method: :post, remote: true do %>
         <span>
-        <%= button_tag(class: "btn btn-default btn-md") do %>
-        <span class= "glyphicon glyphicon-plus-sign" ></span>
-        <%= video.favorites.count %>
+          <%= button_tag(class: "btn btn-default btn-md") do %>
+            <span class= "glyphicon glyphicon-plus-sign" ></span>
+            <%= video.favorites.count %>
+          <% end %>
         </span>
-        <% end %>
     <% end %>
   <% end %>
 <% else %>
     <%= link_to user_session_path do %>
       <span>
-      <%= button_tag(class: "btn btn-default btn-md") do %>
-        <span class= "glyphicon glyphicon-plus-sign" ></span>
-        <%= video.favorites.count %>
+        <%= button_tag(class: "btn btn-default btn-md") do %>
+          <span class= "glyphicon glyphicon-plus-sign" ></span>
+          <%= video.favorites.count %>
+        <% end %>
       </span>
-      <% end %>
     <% end %>
 <% end %>

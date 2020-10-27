@@ -24,32 +24,31 @@
 
 <h3 class="text-center">お気に入り一覧</h3>
 <% @favorites.each do |favorite| %>
-  <div class="video_<%= favorite.video.id %> box"><div>
+  <div class="video_<%= favorite.video.id %> box">
     <div class="image">
       <%= link_to video_path(favorite.video) do %>
         <%= attachment_image_tag favorite.video, :image, format: "jpg", fallback: "noimage.jpg" %>
       <% end %>
     </div>
-  </div>
-  <div class="video-name"><%= truncate(favorite.video.name, length:10) %></div>
-  <!-- お気に入り機能 -->
-  <%= link_to destroy_mypage_favorite_video_favorites_path(favorite.video), method: :delete, remote: true do %>
-    <span>
-    <%= button_tag(class: "btn btn-default btn-md") do %>
-      <span class= "glyphicon glyphicon-plus-sign color-gold" ></span>
-      <%= favorite.video.favorites.count %>
+    <div class="video-name"><%= truncate(favorite.video.name, length:10) %></div>
+    <!-- お気に入り機能 -->
+    <%= link_to destroy_mypage_favorite_video_favorites_path(favorite.video), method: :delete, remote: true do %>
+      <span>
+        <%= button_tag(class: "btn btn-default btn-md") do %>
+          <span class= "glyphicon glyphicon-plus-sign color-gold" ></span>
+          <%= favorite.video.favorites.count %>
+        <% end %>
+      </span>
     <% end %>
-    </span>
-  <% end %>
-  <!-- 評価機能 -->
-  <%= link_to video_path(favorite.video.id) do %>
-    <span>
-    <%= button_tag(class: "btn btn-default btn-md") do %>
-      <%= image_tag 'star-on.png', class: "star-on" %>
-      <%= (favorite.video.reviews.size.zero? ? 0 : favorite.video.reviews.map(&:rating).sum / favorite.video.reviews.size).round(1) %>
+    <!-- 評価機能 -->
+    <%= link_to video_path(favorite.video.id) do %>
+      <span>
+        <%= button_tag(class: "btn btn-default btn-md") do %>
+          <%= image_tag 'star-on.png', class: "star-on" %>
+          <%= (favorite.video.reviews.size.zero? ? 0 : favorite.video.reviews.map(&:rating).sum / favorite.video.reviews.size).round(1) %>
+        <% end %>
+      </span>
     <% end %>
-    </span>
-  <% end %>
   </div>
 <% end %>
 <div class="text-center"><h4><%= paginate @favorites %></h4></div>
