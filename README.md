@@ -29,6 +29,7 @@ Netflixユーザ
 ・Netflixで作品を視聴する時
 
 ## 設計書
+https://drive.google.com/drive/folders/1P8SOtCfpo_SCrpr10whQ2oirV-RoDSji?usp=sharing
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/1WVxE70uJKbcqjEiZ8G5pW2y3u0L6AHwWi5Tx5F-smwI/edit#gid=0
