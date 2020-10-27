@@ -22,19 +22,19 @@
           <tbody>
             <tr height="30">
               <th>カテゴリー</td>
-              <td class="text-center"><%= f.select :category_id,[["映画","映画"],["ドラマ","ドラマ"],["アニメ","アニメ"],["それ以外のカテゴリー","それ以外のカテゴリー"]], include_blank:"---カテゴリー選択---" %></td>
+                <td class="text-center"><%= f.select :category_id,[["映画","映画"],["ドラマ","ドラマ"],["アニメ","アニメ"],["それ以外のカテゴリー","それ以外のカテゴリー"]], include_blank:"---カテゴリー選択---" %></td>
             </tr>
             <tr height="100">
               <th>ジャンル</td>
-              <td class="text-center"><%= f.select :genre_id,[["アクション","アクション"],["冒険","冒険"],["コメディ","コメディ"],["ミステリー","ミステリー"],["ヒューマン","ヒューマン"],["SF","SF"],["ファンタジー","ファンタジー"],["ホラー","ホラー"],["犯罪","犯罪"],["それ以外のジャンル","それ以外のジャンル"]], include_blank:"---ジャンル選択---" %></td>
+                <td class="text-center"><%= f.select :genre_id,[["アクション","アクション"],["冒険","冒険"],["コメディ","コメディ"],["ミステリー","ミステリー"],["ヒューマン","ヒューマン"],["SF","SF"],["ファンタジー","ファンタジー"],["ホラー","ホラー"],["犯罪","犯罪"],["それ以外のジャンル","それ以外のジャンル"]], include_blank:"---ジャンル選択---" %></td>
             </tr>
             <tr height="100">
               <th><%= f.label :name, "作品名" %></td>
-              <td><%= f.text_field :name, :size=>"50" %></td>
+                <td><%= f.text_field :name, :size=>"50" %></td>
             </tr>
             <tr height="100">
               <th><%= f.label :summary, "あらすじ" %></td>
-              <td><%= f.text_area :summary, :size=>"50x7" %></td>
+                <td><%= f.text_area :summary, :size=>"50x7" %></td>
             </tr>
           </tbody>
         </table>

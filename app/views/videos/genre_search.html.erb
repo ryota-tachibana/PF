@@ -6,13 +6,13 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-3">
-    <%= render 'videos/genre_search' %>
+      <%= render 'videos/genre_search' %>
     </div>
     <div class="col-xs-9">
-    <% @videos.each do |video| %>
-      <!-- 作品の部分テンプレート　-->
-      <%= render 'videos/videos_index', video: video %>
-    <% end %>
+      <% @videos.each do |video| %>
+        <!-- 作品の部分テンプレート　-->
+        <%= render 'videos/videos_index', video: video %>
+      <% end %>
     </div>
     <h4><%= link_to "戻る", :back, class: "glyphicon glyphicon-circle-arrow-left" %></h4>
   </div>
