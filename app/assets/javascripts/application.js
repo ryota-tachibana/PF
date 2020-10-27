@@ -25,10 +25,23 @@
 $(document).on('turbolinks:load', function() {
 	// aboutページフェードイン
 	$('.about').hide().fadeIn(2000);
-
+　　// ネタバレ表示
     $('.accordion-content').hide();
-
     $('.accordion-click').click(function() {
         $(this).next().slideToggle();
     });
+    //画像プレビュー
+  function readURL(input) {
+    if(input.files && input.files[0]){
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $('.profile_image').attr('src', e.target.result);
+        $('.image').attr('src', e.target.result);
+      }
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+  $("#file").change(function(){
+    readURL(this);
+  });
 });
