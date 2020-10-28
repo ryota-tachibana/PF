@@ -1,5 +1,6 @@
 class VideosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
+  before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
   def movie
     @videos = Video.where(category_id: "0").page(params[:page]).per(24)
     @category_name = "映画"
@@ -75,6 +76,13 @@ class VideosController < ApplicationController
   private
   def video_params
     params.require(:video).permit(:image, :category_id, :genre_id, :name, :summary)
+  end
+
+  def  ensure_current_user
+       @video = Video.find(params[:id])
+    if @video.user_id != current_user.id
+       redirect_to video_path(@video)
+    end
   end
 
   def video_search_for(model, content, method)
