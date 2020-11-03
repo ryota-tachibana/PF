@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   get 'genre_search' => 'videos#genre_search' #ジャンル検索
   get 'video_search' => 'videos#video_search' #作品名検索
+  get 'tag_search' => 'videos#tag_search' #タグ検索
   resources :videos, only: [:new, :create, :show, :edit, :update, :destroy] do
     get 'videos_movie' => 'videos#movie'
     get 'videos_drama' => 'videos#drama'

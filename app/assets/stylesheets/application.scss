@@ -178,6 +178,24 @@ main {
   height: 350px;
   object-fit: cover;
 }
+
+.tag-box{
+  text-align: center;
+  margin-top: 7px;
+}
+
+.label {
+  background-color: #D7EEFF;
+  display: inline;
+  font-size: 11px;
+  border-radius: 8px;
+  border: 1px solid;
+  border-color: #031de2;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+}
+
 .show-info {
   margin-bottom: 30px;
 }

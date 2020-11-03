@@ -1,0 +1,11 @@
+<h2 div class="title text-center">タグ検索結果一覧</h2>
+<div class="container">
+  <div class="row">
+      <% @videos.each do |video| %>
+        <!-- 作品の部分テンプレート　-->
+        <%= render 'videos/videos_index', video: video %>
+      <% end %>
+    </div>
+    <h4><%= link_to "戻る", :back, class: "glyphicon glyphicon-circle-arrow-left" %></h4>
+  </div>
+</div>

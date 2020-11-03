@@ -2,22 +2,22 @@ class VideosController < ApplicationController
   before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :ensure_current_user, {only: [:edit,:update,:destroy]}
   def movie
-    @videos = Video.where(category_id: "0").page(params[:page]).per(24)
+    @videos = Video.where(category_id: "0").page(params[:page]).per(20)
     @category_name = "映画"
   end
 
   def drama
-    @videos = Video.where(category_id: "1").page(params[:page]).per(24)
+    @videos = Video.where(category_id: "1").page(params[:page]).per(20)
     @category_name = "ドラマ"
   end
 
   def animation
-    @videos = Video.where(category_id: "2").page(params[:page]).per(24)
+    @videos = Video.where(category_id: "2").page(params[:page]).per(20)
     @category_name = "アニメ"
   end
 
   def another
-    @videos = Video.where(category_id: "3").page(params[:page]).per(24)
+    @videos = Video.where(category_id: "3").page(params[:page]).per(20)
     @category_name = "その他"
   end
 
@@ -29,6 +29,10 @@ class VideosController < ApplicationController
     @video = Video.new(video_params)
     @video.user_id = current_user.id
     if @video.save
+       tags = Vision.get_image_data(@video.image)
+       tags.each do |tag|
+        @video.tags.create(name: tag)
+    end
     redirect_to video_path(@video.id)
     else
        render :new
@@ -49,7 +53,12 @@ class VideosController < ApplicationController
   def update
     @video = Video.find(params[:id])
     if @video.update(video_params)
+       tags = Vision.get_image_data(@video.image)
+       tags.each do |tag|
+        @video.tags.create(name: tag)
+    end
     redirect_to video_path(@video)
+
     else
     render :edit
     end
@@ -62,7 +71,7 @@ class VideosController < ApplicationController
   end
 
   def genre_search
-  @videos = Video.where(genre_id: params[:genre_name],category_id: params[:category_name])
+  @videos = Video.where(genre_id: params[:genre_name],category_id: params[:category_name]).page(params[:page]).per(20)
   @category_name = params[:category_name]
   end
 
@@ -71,6 +80,11 @@ class VideosController < ApplicationController
     @content = params['search']['content']
     @method = params['search']['method']
     @result = video_search_for(@model, @content, @method)
+  end
+
+  def tag_search
+    video_ids = Tag.where(name: params[:tag_name]).pluck(:video_id)
+    @videos = Video.find(video_ids)
   end
 
   private
