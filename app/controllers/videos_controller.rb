@@ -53,14 +53,9 @@ class VideosController < ApplicationController
   def update
     @video = Video.find(params[:id])
     if @video.update(video_params)
-       tags = Vision.get_image_data(@video.image)
-       tags.each do |tag|
-        @video.tags.create(name: tag)
-    end
-    redirect_to video_path(@video)
-
+       redirect_to video_path(@video)
     else
-    render :edit
+      render :edit
     end
   end
 
@@ -71,8 +66,8 @@ class VideosController < ApplicationController
   end
 
   def genre_search
-  @videos = Video.where(genre_id: params[:genre_name],category_id: params[:category_name]).page(params[:page]).per(20)
-  @category_name = params[:category_name]
+    @videos = Video.where(genre_id: params[:genre_name],category_id: params[:category_name]).page(params[:page]).per(20)
+    @category_name = params[:category_name]
   end
 
   def video_search
